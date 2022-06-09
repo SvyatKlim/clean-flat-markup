@@ -26,6 +26,7 @@ const scrollFunction = (container, btnClass) => {
     aboutSectionStyles = aboutSection.getBoundingClientRect(),
     tabsSection = document.querySelector('.about__tabs'),
     tabImages = document.querySelector('.about__tabs__images'),
+    tabImagesList = [...document.querySelectorAll('.about__tab__img ')],
     tabList = document.querySelector('.about__tabs__list'),
     header = document.querySelector('.header'),
     vh = window.innerHeight / 100,
