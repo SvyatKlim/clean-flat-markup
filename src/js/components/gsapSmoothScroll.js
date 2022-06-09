@@ -44,23 +44,22 @@ const scrollFunction = (container, btnClass) => {
 
   window.addEventListener('resize', onResize, false);
 
-  function triggerClass(el, className, conditionStarted) {
-    if (conditionStarted) {
-      el.classList.add(className);
-    } else {
-      el.classList.remove(className);
-    }
-  }
 
   scrollbar.on('scroll', (status) => {
     const offset = status.scroll,
       scrollPosition = offset.y + window.innerHeight;
-      scrollPosition > cardsWrapperStyles.y ? cardsWrapper.classList.add('animation-start') : cardsWrapper.classList.remove('animation-start')
-      offset.y > aboutSectionStyles.y ? aboutSection.classList.add('animation-about') : aboutSection.classList.remove('animation-about')
+    scrollPosition > cardsWrapperStyles.y ? cardsWrapper.classList.add('animation-start') : cardsWrapper.classList.remove('animation-start');
 
     if (window.innerWidth > 1024) {
-      offset.y === introSectionStyles.y ? introSection.classList.add('animation-intro') : introSection.classList.remove('animation-intro')
-
+      if (aboutSection.classList.contains('animation-about')) {
+        header.classList.add('hidden')
+      } else {
+        header.classList.remove('hidden')
+        headerOnScroll(offset.y); //header position
+      }
+      scrollPosition > cardsWrapperStyles.y ? cardsWrapper.classList.add('animation-start') : cardsWrapper.classList.remove('animation-start');
+      offset.y === introSectionStyles.y ? introSection.classList.add('animation-intro') : introSection.classList.remove('animation-intro');
+      scrollPosition > (aboutSectionStyles.y + aboutSectionStyles.height / 2) ? aboutSection.classList.add('animation-about') : aboutSection.classList.remove('animation-about');
       if (offset.y > 2 && !isScrollDocument) {
         gsap.to(btn.querySelector('.order-btn__wrapper')
           , {
@@ -78,14 +77,6 @@ const scrollFunction = (container, btnClass) => {
             y: 0,
           })
         isScrollDocument = false;
-      }
-
-
-      if (aboutSection.classList.contains('animation-about')) {
-        header.classList.add('hidden')
-      } else {
-        header.classList.remove('hidden')
-        headerOnScroll(offset.y); //header position
       }
       if (scrollPosition >= startAnimationPosition && !isAnimation) {
         const tabsOffset = tabsSection.getBoundingClientRect();
@@ -109,6 +100,7 @@ const scrollFunction = (container, btnClass) => {
             setTimeout(() => {
               tabList.classList.add('animation-list');
             }, 200)
+            console.log(offset.y, tabsOffset.top)
             scrollbar.scrollTo(offset.y + tabsOffset.top)
             animation2.to(tabImages, {
               y: 0,
@@ -145,7 +137,9 @@ const scrollFunction = (container, btnClass) => {
         })
       }
     } else {
+      scrollPosition > (scrollContent.height + aboutSectionStyles.height) ? aboutSection.classList.add('animation-about') : aboutSection.classList.remove('animation-about');
       if (aboutSection.classList.contains('animation-about')) {
+        console.log('addClass')
         gsap.to(btn, {
           duration: 0.4,
           opacity: 0,
@@ -158,13 +152,21 @@ const scrollFunction = (container, btnClass) => {
           opacity: 1,
           zIndex: 5,
           ease: Power2.easeOut
-        })
+        });
       }
     }
-  });
+
+    window.addEventListener('resize', () => {
+      scrollbar.update()
+      aboutSection.classList.remove('animation-about')
+    });
+
+  })
+
   window.addEventListener('resize', () => {
-    scrollbar.update()
+    aboutSection.classList.remove('animation-about')
     if (window.innerWidth <= 1024) {
+      header.classList.remove('hidden')
       gsap.to(btn.querySelector('.order-btn__wrapper'), {
         scale: 1,
         x: 0,
