@@ -24,7 +24,6 @@ const scrollFunction = (container, btnClass) => {
     cardsWrapperStyles = cardsWrapper.getBoundingClientRect(),
     aboutSection = document.querySelector('.about'),
     aboutSectionStyles = aboutSection.getBoundingClientRect(),
-    aboutInfoHeight = document.querySelector('.about__info').offsetHeight,
     tabsSection = document.querySelector('.about__tabs'),
     tabImages = document.querySelector('.about__tabs__images'),
     tabList = document.querySelector('.about__tabs__list'),
@@ -37,7 +36,6 @@ const scrollFunction = (container, btnClass) => {
     animation3 = gsap.timeline({defaults: {ease: Power4.easeOut, duration: 0.9}}),
     animation4 = gsap.timeline({defaults: {ease: Power2.easeIn, duration: 1}}),
     isAnimation = false,
-    isBtnReturn = false,
     isScrollDocument = false;
 
   function onResize() {
@@ -57,13 +55,13 @@ const scrollFunction = (container, btnClass) => {
   scrollbar.on('scroll', (status) => {
     const offset = status.scroll,
       scrollPosition = offset.y + window.innerHeight;
-    scrollPosition > cardsWrapperStyles.y ? triggerClass(cardsWrapper, 'animation-start', true) : triggerClass(cardsWrapper, 'animation-start', false)
-    offset.y > aboutSectionStyles.y ? triggerClass(aboutSection, 'animation-about', true) : triggerClass(aboutSection, 'animation-about', false)
+      scrollPosition > cardsWrapperStyles.y ? cardsWrapper.classList.add('animation-start') : cardsWrapper.classList.remove('animation-start')
+      offset.y > aboutSectionStyles.y ? aboutSection.classList.add('animation-about') : aboutSection.classList.remove('animation-about')
 
     if (window.innerWidth > 1024) {
-      offset.y === introSectionStyles.y ? triggerClass(introSection, 'animation-intro', true) : triggerClass(introSection, 'animation-intro', false)
+      offset.y === introSectionStyles.y ? introSection.classList.add('animation-intro') : introSection.classList.remove('animation-intro')
 
-      if (offset.y > 0 && !isScrollDocument) {
+      if (offset.y > 2 && !isScrollDocument) {
         gsap.to(btn.querySelector('.order-btn__wrapper')
           , {
             duration: 0.5,
@@ -71,7 +69,8 @@ const scrollFunction = (container, btnClass) => {
             y: 80,
           })
         isScrollDocument = true;
-      } else if (offset.y < 1 && isScrollDocument) {
+      } else if (offset.y <= 2 && isScrollDocument) {
+        console.log(true)
         gsap.to(btn.querySelector('.order-btn__wrapper')
           , {
             duration: 0.5,
@@ -164,6 +163,7 @@ const scrollFunction = (container, btnClass) => {
     }
   });
   window.addEventListener('resize', () => {
+    scrollbar.update()
     if (window.innerWidth <= 1024) {
       gsap.to(btn.querySelector('.order-btn__wrapper'), {
         scale: 1,

@@ -46,6 +46,7 @@
       z-index: 1;
       will-change: transform;
       transform: translateX(-17.8vw);
+      overflow: hidden;
     }
 
     &.start-animation {
