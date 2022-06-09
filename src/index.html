@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/main.min.css">
+  <title>Homepage</title>
+</head>
+<body class="smooth-wrapper" translate="no">
+@@include('./parts/header.html')
+<aside class="order-btn">
+  <div class="order-btn__wrapper">
+    <button type="button" class="order-btn__link keyframe-on"> <span class="order-btn__link__text">Заказать <br> уборку</span></button>
+
+  </div>
+</aside>
+<main class="main smooth-content" data-scroll-container>
+  <section class="intro animation-intro">
+    <div class="intro__img">
+      <img src="assets/img/picture/intro.jpg" alt="intro image">
+    </div>
+    <div class="intro__info__wrapper">
+      <div class="intro__info">
+        <h1>Уборка квартир в Киеве </h1>
+        <p class="text">
+          Мы уберем у вас дома или в офисе. Наведем чистоту после ремонта и проведем генеральную уборку.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="benefits padding-top-increased  padding-bottom d-flex">
+    @@include('parts/card.html', {
+    "className": "benefits__card",
+    "text": "Тщательно отобранный персонал",
+    "backgroundContent" : "Не нужно тратить время, силы и ресурсы на размещение вакансий, проведение собеседований, про- верку кандидатов на должность уборщицы. За счет больших объемов мы можем сделать это эффективнее.",
+    "img": "benefits-1.png",
+    })
+    @@include('parts/card.html', {
+    "className": "benefits__card",
+    "text": "Качественная эко-химия",
+    "backgroundContent" : "Не нужно тратить время, силы и ресурсы на размещение вакансий, проведение собеседований, про- верку кандидатов на должность уборщицы. За счет больших объемов мы можем сделать это эффективнее.",
+    "img": "benefits-2.png",
+    })
+    @@include('parts/card.html', {
+    "className": "benefits__card",
+    "text": "Контролируем качество",
+    "img": "benefits-3.png",
+    "backgroundContent" : "Не нужно тратить время, силы и ресурсы на размещение вакансий, проведение собеседований, про- верку кандидатов на должность уборщицы. За счет больших объемов мы можем сделать это эффективнее.",
+    })
+    @@include('parts/card.html', {
+    "className": "benefits__card",
+    "text": "Работаем круглосуточно",
+    "backgroundContent" : "Не нужно тратить время, силы и ресурсы на размещение вакансий, проведение собеседований, про- верку кандидатов на должность уборщицы. За счет больших объемов мы можем сделать это эффективнее.",
+    "img": "benefits-4.png",
+    })
+  </section>
+  <section id="about" class="about padding-top ">
+    <div class="about__info container padding-left padding-right">
+      <h2 class="about__info__title">Как мы убираем</h2>
+      <p class="about__info__description text margin-right">Клинер приезжает в назначенное время со всем необходимым и сразу
+        приступает к делу. Вам остаётся только оценить результат.</p>
+    </div>
+    <div class="about__tabs margin-top ">
+      <div id="about-list" class="about__tabs__list">
+        <ul>
+          <li class="about__tab">
+            <a class="about__tab__link h2 regular active " href="#" data-name="kitchen">
+              <span>Кухня</span>
+            </a>
+          </li>
+          <li class="about__tab">
+            <a class="about__tab__link h2 regular" href="#" data-name="rooms">
+              <span>Комната</span>
+            </a>
+          </li>
+          <li class="about__tab">
+            <a class="about__tab__link h2 regular" href="#" data-name="bathroom">
+              <span>Ванная</span>
+            </a>
+          </li>
+          <li class="about__tab">
+            <a class="about__tab__link h2 regular" href="#" data-name="lobby">
+              <span>Прихожая</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="about-images" class="about__tabs__images">
+        @@include('parts/tab-img.html', {
+        "class" : 'before-animation first-img',
+        "dataName": "kitchen",
+        arr : [
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        ],
+        "img": "how-we-clean-placeholder.jpg",
+        "placeholder": "how we clean image room",
+        })
+
+        @@include('parts/tab-img.html', {
+        'class' : '',
+        "dataName": "rooms",
+        arr : [
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        ],
+        "img": "how-we-clean-rooms.jpg",
+        "placeholder": "how we clean image rooms",
+        })
+
+        @@include('parts/tab-img.html', {
+        'class' : '',
+        "dataName": "bathroom",
+        arr : [
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        ],
+        "img": "how-we-clean-bath.jpg",
+        "placeholder": "how we clean image bathroom",
+        })
+
+        @@include('parts/tab-img.html', {
+        'class' : '',
+        "dataName": "lobby",
+        arr : [
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        "Чистим фасад вытяжки",
+        ],
+        "img": "how-we-clean-lobby.jpg",
+        "placeholder": "how we clean image lobby",
+        })
+      </div>
+    </div>
+  </section>
+</main>
+<script src="./js/main.min.js"></script>
+</body>
+</html>

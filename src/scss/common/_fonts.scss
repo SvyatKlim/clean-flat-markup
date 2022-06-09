@@ -1,0 +1,28 @@
+/* TT Travels Regular */
+@font-face {
+  font-display: swap;
+  font-family: 'TT Travels';
+  font-weight: 400;
+  src: url('../assets/fonts/TTTravels/TTTravels-Regular.ttf') format('truetype');
+}
+
+/* TT Travels Medium */
+@font-face {
+  font-display: swap;
+  font-family: 'TT Travels';
+  font-weight: 500;
+  src: url('../assets/fonts/TTTravels/TTTravels-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'TT Travels';
+  font-weight: 600;
+  src: url('../assets/fonts/TTTravels/TTTravels-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'TT Travels';
+  src: url('../assets/fonts/TTTravels/TTTravels-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}

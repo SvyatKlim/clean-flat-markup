@@ -1,0 +1,21 @@
+@mixin animation-mixin($name, $from,$fromDisplay, $to, $toDisplay) {
+  @keyframes #{$name} {
+    from {
+      display: $fromDisplay;
+      transform: translate($from);
+    }
+    to {
+      display: $toDisplay;
+      transform: translate($to);
+    }
+  }
+}
+
+
+@mixin cycle($num,$defaultDelay,$delay) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) {
+      transition-delay: $defaultDelay + (($delay) * ($i));
+    }
+  }
+}

@@ -1,0 +1,149 @@
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4, {
+  margin: 0;
+  font-weight: 400;
+  font-family: $font;
+  letter-spacing: normal;
+  font-style: normal;
+  font-size: clamp(var(--min), var(--val), var(--max));
+}
+
+h1, .h1 {
+  font-size: 76px;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+
+h2,
+.h2 {
+  font-size: 44px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+h3,
+.h3 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+}
+
+h4,
+.h4, a,
+button {
+  font-family: $font;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  color: $black;
+}
+
+button {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.27;
+  letter-spacing: 0.3px;
+}
+
+p,
+.p {
+  margin: 0;
+
+  &.text-small {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+
+.white {
+  color: $white;
+}
+
+.gray-text {
+  color: $gray;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.no-line-height {
+  line-height: normal;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.break {
+  margin: 10px;
+}
+
+@media screen and (max-width: 1680px) {
+  p.text {
+    font-size: inherit;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  h1, .h1 {
+    font-size: 62px;
+  }
+
+
+  h2,
+  .h2 {
+    font-size: 38px;
+  }
+
+  h3,
+  .h3 {
+    font-size: 20px;
+  }
+
+  p,
+  .p {
+    &.text-small {
+      font-size: 12px;
+    }
+  }
+  h4,
+  .h4, a,
+  button {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1, .h1 {
+    font-size: 50px;
+  }
+}

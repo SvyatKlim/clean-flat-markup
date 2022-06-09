@@ -1,0 +1,351 @@
+.header {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  opacity: 1;
+  transform: translateY(0);
+  transition: background-color 0.4s linear, opacity 0.5s ease-in, transform 0.5s ease-in;
+  will-change: transform, opacity;
+
+  &::before {
+    content: '';
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: all 0.8s;
+    background-color: transparent;
+  }
+
+  &.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  &.open-menu {
+    &::before {
+      display: block;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.close {
+    &::before {
+      display: none;
+      background-color: transparent;
+    }
+  }
+
+  &__container {
+    margin: 0 auto;
+    padding: 20px 50px;
+    width: 100vw;
+    display: flex;
+    position: relative;
+    transition: background-color 0.3s;
+    align-items: center;
+
+    .header-fixed & {
+      background-color: $white;
+    }
+  }
+
+  &__logo {
+    z-index: 1;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  &__switcher {
+    margin-left: 20px;
+
+    &--mobile {
+      display: none;
+    }
+  }
+
+  &__menu {
+    &__wrapper {
+      margin: 0 auto;
+    }
+
+    &__inner {
+      display: flex;
+      align-items: center;
+    }
+
+    &__item {
+      margin-right: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__link {
+      font-weight: 500;
+      transition: color 0.3s linear;
+
+      svg path {
+        transition: fill 0.3s linear;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          color: $purple;
+        }
+      }
+    }
+  }
+
+  &__phone__link {
+    transition: color 0.3s linear;
+    @media (hover: hover) {
+      &:hover {
+        color: $purple;
+      }
+    }
+  }
+
+  &__burger {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 32px;
+    padding: 15px 7px;
+    cursor: pointer;
+
+    span {
+      width: 20px;
+      height: 2px;
+      position: relative;
+      background-color: $black;
+      top: -5px;
+      transition: transform 0.3s cubic-bezier(0, 0, 0.58, 1), opacity 0.3s, top 0.3s ease-out;
+
+      &:last-child {
+        top: 1px;
+        opacity: 1;
+      }
+    }
+
+    &.active {
+      span {
+        transform: rotate(45deg);
+        background-color: $white;
+        top: 0;
+
+        &:last-child {
+          transform: rotate(-45deg);
+          top: -2px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1921px) {
+    &__container {
+      padding: 20px 60px;
+    }
+    &__burger {
+      margin-left: 2.5vw;
+    }
+  }
+  @media screen and (max-width: 1680px) {
+
+  }
+
+  @media screen and (max-width: 1440px) {
+    &__container {
+      padding: 20px 30px 20px 54px;
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    &__phone {
+      margin-left: auto;
+    }
+    &__menu {
+      width: 100%;
+      height: 100%;
+      background-color: $purple;
+      justify-content: center;
+
+      &__wrapper {
+        margin: 0 auto;
+        transform: translate(100vw);
+        flex-direction: column;
+        align-items: center;
+        width: 40vw;
+        display: flex;
+        height: 100vh;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        &.header__menu__aside {
+        }
+
+        &.open {
+          animation: 0.6s ease showNavAsideMobile;
+          animation-fill-mode: forwards;
+        }
+
+        &.close {
+          animation: 0.6s ease hideNavAsideMobile;
+          animation-fill-mode: forwards;
+        }
+      }
+
+      &__inner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__item {
+        margin-bottom: 30px;
+        margin-right: 0;
+        width: 100%;
+
+      }
+
+      &__link {
+        font-size: 30px;
+        color: $white;
+        text-align: center;
+      }
+    }
+    &__phone {
+      z-index: 2;
+
+      &__link {
+        .open-menu & {
+          color: $white;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    &__menu {
+      padding: 20px;
+
+      &__wrapper {
+        width: 50vw;
+        z-index: 2;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &__switcher {
+      display: none;
+
+      &--mobile {
+        display: block;
+        margin-left: 0;
+      }
+    }
+  }
+  @media screen and (max-width: 576px) {
+    &__container {
+      padding: 10px 20px;
+    }
+    &__menu {
+      &__wrapper {
+        width: 100vw;
+      }
+
+      &__link {
+        font-size: 20px;
+      }
+    }
+    &__burger {
+      margin-left: auto;
+    }
+    &__phone {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-150%);
+      width: 70%;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: -1;
+
+      .open-menu & {
+        opacity: 1;
+        transition-delay: 0.5s;
+        z-index: 2;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  @media screen and (max-width: 320px){
+    &__phone{
+      width: 100%;
+      padding: 20px;
+      top: 80vh;
+    }
+  }
+}
+
+
+@keyframes showNavAside {
+  from {
+    display: none;
+    transform: translate(60vw);
+  }
+  to {
+    display: flex;
+    transform: translate(0vw);
+  }
+}
+
+@keyframes hideNavAside {
+  from {
+    display: flex;
+    transform: translate(0vw);
+  }
+  to {
+    display: none;
+    transform: translate(60vw);
+  }
+}
+
+@keyframes showNavAsideMobile {
+  from {
+    display: none;
+    transform: translate(100vw);
+  }
+  to {
+    display: flex;
+    transform: translate(0);
+  }
+}
+
+@keyframes hideNavAsideMobile {
+  from {
+    display: flex;
+    transform: translate(0);
+  }
+  to {
+    display: none;
+    transform: translate(100vw);
+  }
+}
