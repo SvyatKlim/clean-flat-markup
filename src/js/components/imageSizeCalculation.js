@@ -1,8 +1,8 @@
 const imageSizeCalculation = () => {
 
   function reset(el) {
-    el.style.width = '100%';
-    el.style.height = '100%';
+    el.style.width = 'inherit';
+    el.style.height = 'inherit';
   }
 
   function setup(el) {
@@ -28,7 +28,9 @@ const imageSizeCalculation = () => {
 
   window.addEventListener('resize', () => {
     images.map((el) => reset(el));
-    images.map((el) => setup(el));
+    if (window.innerWidth > 1024) {
+      images.map((el) => setup(el));
+    }
   });
 }
 

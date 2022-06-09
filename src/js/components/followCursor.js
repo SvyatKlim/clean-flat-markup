@@ -8,13 +8,6 @@ const followCursor = () => {
     introSection = document.querySelector('.intro'),
     timelineRotate = gsap.timeline({defaults: {ease: 'none', duration: 40}});
 
-  let containerProps = {
-    height: 230,
-    width: 230,
-    increasedHeight: 350,
-    increasedWidth: 350,
-  };
-
   timelineRotate.to(btn, {
     rotation: 360,
     repeat: -1,
@@ -22,15 +15,12 @@ const followCursor = () => {
 
   container.addEventListener('mouseleave', () => {
     gsap.to(container, {
-      height: containerProps.height,
-      width: containerProps.width,
       ease: "power3",
       duration: 0.3,
       marginTop: 0,
-      marginLeft: 0.
+      marginLeft: 0,
     });
 
-    const ballStyles = window.getComputedStyle(container);
 
     if (introSection.classList.contains('animation-intro')) {
       console.log(true)
@@ -62,12 +52,9 @@ const followCursor = () => {
 
   container.addEventListener('mouseenter', (ev) => {
     gsap.to(container, {
-      height: containerProps.increasedHeight,
-      width: containerProps.increasedWidth,
       ease: "power3",
       duration: 0.6,
       marginTop: -40,
-      marginLeft: -60
     });
 
     gsap.to(ball, {
@@ -104,6 +91,5 @@ const followCursor = () => {
       duration: 0.3
     });
   }
-
 }
 export default followCursor;

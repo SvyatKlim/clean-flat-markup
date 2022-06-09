@@ -19,7 +19,7 @@ const scrollFunction = (container, btnClass) => {
     }),
     scrollContent = elem.getBoundingClientRect(),
     introSection = document.querySelector('.intro'),
-    introSectionStyles = introSection.getBoundingClientRect() ,
+    introSectionStyles = introSection.getBoundingClientRect(),
     cardsWrapper = document.querySelector('.benefits'),
     cardsWrapperStyles = cardsWrapper.getBoundingClientRect(),
     aboutSection = document.querySelector('.about'),
@@ -71,7 +71,7 @@ const scrollFunction = (container, btnClass) => {
             y: 80,
           })
         isScrollDocument = true;
-      } else if (offset.y < 1 && isScrollDocument ) {
+      } else if (offset.y < 1 && isScrollDocument) {
         gsap.to(btn.querySelector('.order-btn__wrapper')
           , {
             duration: 0.5,
@@ -95,7 +95,7 @@ const scrollFunction = (container, btnClass) => {
         gsap.to(btn, {
           duration: 2,
           delay: 1,
-          translateY: parseInt(btnStyles.height) /1.5,
+          translateY: parseInt(btnStyles.height) / 1.5,
           translateX: 0,
           scale: 0,
           zIndex: 0,
@@ -116,7 +116,7 @@ const scrollFunction = (container, btnClass) => {
             })
             animation3.to(tabList, {
               display: 'flex',
-              xPercent: 100,
+              x: 0,
               onComplete: () => {
                 tabImages.querySelector('.first-img').classList.add('active')
               }
@@ -137,10 +137,10 @@ const scrollFunction = (container, btnClass) => {
           pointerEvents: "unset",
         })
       }
-      if (scrollPosition >= (scrollContent.height - 1)  && isAnimation === true) {
+      if (scrollPosition >= (scrollContent.height - 1) && isAnimation === true) {
         gsap.to(btn, {
           duration: 0.6,
-          translateY: parseInt(btnStyles.height) /1.5,
+          translateY: parseInt(btnStyles.height) / 1.5,
           scale: 0,
           pointerEvents: "unset",
         })
@@ -162,8 +162,18 @@ const scrollFunction = (container, btnClass) => {
         })
       }
     }
-
   });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 1024) {
+      gsap.to(btn.querySelector('.order-btn__wrapper'), {
+        scale: 1,
+        x: 0,
+        y: 0,
+        duration: 0.3,
+        borderColor: 'transparent'
+      });
+    }
+  })
 
 }
 export default scrollFunction;
