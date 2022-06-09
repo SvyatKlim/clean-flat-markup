@@ -102,7 +102,7 @@ const scrollFunction = (container, btnClass) => {
               tabList.classList.add('animation-list');
             }, 200)
             console.log(offset.y, tabsOffset.top)
-            scrollbar.scrollTo(offset.y + tabsOffset.top)
+            scrollbar.scrollTo('bottom')
             animation2.to(tabImages, {
               y: 0,
             })
@@ -167,6 +167,12 @@ const scrollFunction = (container, btnClass) => {
   window.addEventListener('resize', () => {
     aboutSection.classList.remove('animation-about')
     if (window.innerWidth <= 1024) {
+      let imgActiveClass = tabImagesList.findIndex((el) => {
+       return el.classList.contains('active')
+      })
+      if (imgActiveClass === -1){
+        document.querySelector('.first-img').classList.add('active')
+      }
       header.classList.remove('hidden')
       gsap.to(btn.querySelector('.order-btn__wrapper'), {
         scale: 1,
